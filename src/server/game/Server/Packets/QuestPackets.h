@@ -138,7 +138,7 @@ namespace WorldPackets
             float POIx                      = 0.0f;
             float POIy                      = 0.0f;
             int32 POIPriority               = 0;
-            uint64 AllowableRaces           = UI64LIT(0xFFFFFFFFFFFFFFFF);
+            Trinity::RaceMask<uint64> AllowableRaces = { UI64LIT(0xFFFFFFFFFFFFFFFF) };
             std::string LogTitle;
             std::string LogDescription;
             std::string QuestDescription;
@@ -635,10 +635,10 @@ namespace WorldPackets
             int32 Value;
         };
 
-        class WorldQuestUpdate final : public ServerPacket
+        class WorldQuestUpdateResponse final : public ServerPacket
         {
         public:
-            WorldQuestUpdate() : ServerPacket(SMSG_WORLD_QUEST_UPDATE, 100) { }
+            WorldQuestUpdateResponse() : ServerPacket(SMSG_WORLD_QUEST_UPDATE_RESPONSE, 100) { }
 
             WorldPacket const* Write() override;
 

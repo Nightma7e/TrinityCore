@@ -143,7 +143,7 @@ WorldPacket const* WorldPackets::Quest::QueryQuestInfoResponse::Write()
         _worldPacket << int32(Info.TimeAllowed);
 
         _worldPacket << uint32(Info.Objectives.size());
-        _worldPacket << uint64(Info.AllowableRaces);
+        _worldPacket << uint64(Info.AllowableRaces.RawValue);
         _worldPacket << int32(Info.TreasurePickerID);
         _worldPacket << int32(Info.Expansion);
         _worldPacket << int32(Info.ManagedWorldStateID);
@@ -594,7 +594,7 @@ WorldPacket const* WorldPackets::Quest::DailyQuestsReset::Write()
     return &_worldPacket;
 }
 
-WorldPacket const* WorldPackets::Quest::WorldQuestUpdate::Write()
+WorldPacket const* WorldPackets::Quest::WorldQuestUpdateResponse::Write()
 {
     _worldPacket << uint32(WorldQuestUpdates.size());
 
